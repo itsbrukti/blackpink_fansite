@@ -1,0 +1,163 @@
+/* =========================
+   MEMBERS PAGE HEADER
+========================= */
+.page-title {
+  margin-top: 140px;
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 3px;
+  color: #ff69b4;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 60px;
+  color: #888;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   MEMBER PROFILE SECTION
+========================= */
+.member-full-profile {
+  margin-bottom: 120px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,105,180,0.2);
+}
+
+/* top layout (image + title) */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.profile-image img {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.profile-title h2 {
+  font-size: 2.8rem;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 3px;
+}
+
+.role {
+  color: #ff69b4;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.tagline {
+  margin-top: 12px;
+  font-style: italic;
+  color: #777;
+}
+
+/* =========================
+   PROFILE GRID
+========================= */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* cards */
+.profile-card {
+  background: #e9a8b3;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+body.dark .profile-card {
+  background: #1e1e1e;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+}
+
+/* card titles */
+.profile-card h3 {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #ff69b4;
+}
+
+/* lists */
+.profile-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-card li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.profile-card strong {
+  color: #333;
+}
+
+body.dark .profile-card strong {
+  color: #D98C9A;
+}
+
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: auto;
+  }
+}

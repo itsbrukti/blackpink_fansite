@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACKPINK · music archive</title>
+  <!-- fonts & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- external CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/music.css">
+</head>
+
+<body class="dark">
+  <!-- navigation -->
+  <div include-html="nav.html"></div>
+
+  <!-- Hero Banner - SMALLER NOW -->
+  <section class="music-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">music archive</h1>
+      <p class="hero-subtitle">complete discography · albums · solos · collaborations</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Studio Albums</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">32+</span>
+          <span class="stat-label">Solo Tracks</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Collaborations</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">#1</span>
+          <span class="stat-label">Billboard</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- main content -->
+  <main class="container">
+    <!-- MAIN FILTER TABS - GROUP, NON-ALBUM, COLLAB, SOLO -->
+    <div class="main-filter-tabs">
+      <button class="filter-tab active" data-filter="group">📀 GROUP ALBUMS</button>
+      <button class="filter-tab" daa-filter="singles">🎵 NON-ALBUM SINGLES</button>
+      <button class="filter-tab" data-filter="collab">🤝 COLLABORATIONS</button>
+      <button class="filter-tab" data-filter="solo">👑 SOLO WORKS</button>
+    </div>
+
+    <!-- GROUP ALBUMS SECTION -->
+    <section id="group-section" class="filter-section active" data-filter="group">
+      <div class="section-header">
+        <h2 class="section-title">📀 group albums</h2>
+        <p class="section-desc">The complete collection of BLACKPINK's studio albums</p>
+      </div>
+
+      <div class="album-grid"> <!-- The Album -->
+        <div class="album-card">
+          <div class="album-cover"> <img
+              src="https://tse4.mm.bing.net/th/id/OIP.Zk-rt3zi0MyZgYhX8aGjxQHaHa?cb=defcachec2&rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="The Album" onerror="this.src='https://via.placeholder.com/300x300/ff69b4/ffffff?text=THE+ALBUM'">
+            <div class="album-overlay"> <button class="play-btn"
+                onclick="playOnYouTube('BLACKPINK The Album full album')"><i class="fas fa-play"></i></button> </div>
+          </div>
+          <div class="album-info">
+            <h3>The Album</h3>
+            <div class="album-meta"> <span class="album-year"><i class="far fa-calendar-alt"></i> 2020</span> <span
+                class="album-sales"><i class="fas fa-music"></i> 1.73M+</span> </div>
+            <div class="album-badge">Platinum</div> <button class="show-tracks-btn" data-album="the-album"> <i
+                class="fas fa-list"></i> SHOW TRACKS </button>
+            <ul class="tracklist" id="the-album-tracks" style="display: none;">
+              <li><span><i class="fas fa-music"></i> How You Like That</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK How You Like That')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('How You Like That', 'The Album', '3:01', 'Teddy, Danny Chung, Jennie, R. Tee, 24', 'Pre-release single')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Ice Cream (with Selena Gomez)</span> <span
+                  class="track-actions"><button onclick="playOnYouTube('BLACKPINK Ice Cream')"><i
+                      class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Ice Cream', 'The Album', '2:56', 'Bekuh BOOM, Victoria Monét, Teddy, Selena Gomez, 24', 'Peaked #13 on Billboard Hot 100')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Pretty Savage</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Pretty Savage')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Pretty Savage', 'The Album', '3:19', 'Teddy, Løren, Vince, Danny Chung', 'Fan favorite')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Lovesick Girls</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Lovesick Girls')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Lovesick Girls', 'The Album', '3:12', 'Teddy, Jennie, Løren, Jisoo, 24', 'Title track')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Bet You Wanna (feat. Cardi B)</span> <span
+                  class="track-actions"><button onclick="playOnYouTube('BLACKPINK Bet You Wanna')"><i
+                      class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Bet You Wanna', 'The Album', '2:39', 'Tommy Brown, Steven Franks, Cardi B', 'Only English track on album')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Crazy Over You</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Crazy Over You')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Crazy Over You', 'The Album', '2:41', 'Teddy, Bekuh BOOM, 24, Future Bounce', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Love to Hate Me</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Love to Hate Me')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Love to Hate Me', 'The Album', '2:50', 'Tushar Apte, Rob Grimaldi, Chloe George, Steph Jones, Danny Chung', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> You Never Know</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK You Never Know')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('You Never Know', 'The Album', '3:49', 'Løren, Bekuh BOOM', 'Emotional ballad')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+            </ul>
+          </div>
+        </div> <!-- Born Pink -->
+        <div class="album-card">
+          <div class="album-cover"> <img src="https://i.pinimg.com/736x/5e/fa/db/5efadbc4cacdc81a567aa959b7dcbb79.jpg"
+              alt="Born Pink" onerror="this.src='https://via.placeholder.com/300x300/ff1493/ffffff?text=BORN+PINK'">
+            <div class="album-overlay"> <button class="play-btn"
+                onclick="playOnYouTube('BLACKPINK Born Pink full album')"><i class="fas fa-play"></i></button> </div>
+          </div>
+          <div class="album-info">
+            <h3>Born Pink</h3>
+            <div class="album-meta"> <span class="album-year"><i class="far fa-calendar-alt"></i> 2022</span> <span
+                class="album-sales"><i class="fas fa-music"></i> 2.98M+</span> </div>
+            <div class="album-badge">Double Platinum</div> <button class="show-tracks-btn" data-album="born-pink"> <i
+                class="fas fa-list"></i> SHOW TRACKS </button>
+            <ul class="tracklist" id="born-pink-tracks" style="display: none;">
+              <li><span><i class="fas fa-music"></i> Pink Venom</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Pink Venom')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Pink Venom', 'Born Pink', '3:06', 'Teddy, Danny Chung, 24, R. Tee, IDO', 'First #1 on Billboard Global 200')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Shut Down</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Shut Down')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Shut Down', 'Born Pink', '2:55', 'Teddy, Danny Chung, 24', 'Title track, samples classical music')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Typa Girl</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Typa Girl')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Typa Girl', 'Born Pink', '2:59', 'Bekuh BOOM, Somdef', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Yeah Yeah Yeah</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Yeah Yeah Yeah')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Yeah Yeah Yeah', 'Born Pink', '2:58', 'VVN, Kush, Jisoo, Rosé, 24', 'Co-written by Jisoo & Rosé')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Hard to Love</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Hard to Love')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Hard to Love', 'Born Pink', '2:42', 'Teddy, Løren, Vince, 24', 'Solo by Rosé')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> The Happiest Girl</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK The Happiest Girl')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('The Happiest Girl', 'Born Pink', '3:42', 'Teddy, 24, Nohc, Vince', 'Emotional ballad')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Tally</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Tally')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Tally', 'Born Pink', '3:02', 'Babysolo, Nat Dunn, 24, David Phelan, Alex Oriet', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Ready For Love</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Ready For Love')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Ready For Love', 'Born Pink', '3:04', 'Teddy, VVN, Kush, 24', 'Originally teased in 2020')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+            </ul>
+          </div>
+        </div> <!-- Square Up -->
+        <div class="album-card">
+          <div class="album-cover"> <img src="https://i.pinimg.com/736x/22/c3/01/22c301b1a23e62c4dba8d634055adcc1.jpg"
+              alt="Square Up" onerror="this.src='https://via.placeholder.com/300x300/ffb6c1/000000?text=SQUARE+UP'">
+            <div class="album-overlay"> <button class="play-btn"
+                onclick="playOnYouTube('BLACKPINK Square Up full album')"><i class="fas fa-play"></i></button> </div>
+          </div>
+          <div class="album-info">
+            <h3>Square Up</h3>
+            <div class="album-meta"> <span class="album-year"><i class="far fa-calendar-alt"></i> 2018</span> <span
+                class="album-sales"><i class="fas fa-music"></i> 564K+</span> </div>
+            <div class="album-badge">Gold</div> <button class="show-tracks-btn" data-album="square-up"> <i
+                class="fas fa-list"></i> SHOW TRACKS </button>
+            <ul class="tracklist" id="square-up-tracks" style="display: none;">
+              <li><span><i class="fas fa-music"></i> DDU-DU DDU-DU</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK DDU-DU DDU-DU')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('DDU-DU DDU-DU', 'Square Up', '3:29', 'Teddy', 'First song to enter Billboard Hot 100 (#55)')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Forever Young</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Forever Young')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Forever Young', 'Square Up', '3:57', 'Teddy', 'Fan favorite')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Really</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Really')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Really', 'Square Up', '3:17', 'Teddy', 'R&B track')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> See U Later</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK See U Later')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('See U Later', 'Square Up', '3:18', 'Teddy', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+            </ul>
+          </div>
+        </div> <!-- Kill This Love -->
+        <div class="album-card">
+          <div class="album-cover"> <img src="https://i.pinimg.com/736x/5d/8a/33/5d8a333ca70645d96c974013ba82d668.jpg"
+              alt="Kill This Love"
+              onerror="this.src='https://via.placeholder.com/300x300/ff69b4/ffffff?text=KILL+THIS+LOVE'">
+            <div class="album-overlay"> <button class="play-btn"
+                onclick="playOnYouTube('BLACKPINK Kill This Love full album')"><i class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="album-info">
+            <h3>Kill This Love</h3>
+            <div class="album-meta"> <span class="album-year"><i class="far fa-calendar-alt"></i> 2019</span> <span
+                class="album-sales"><i class="fas fa-music"></i> 789K+</span> </div>
+            <div class="album-badge">Platinum</div> <button class="show-tracks-btn" data-album="kill-this-love"> <i
+                class="fas fa-list"></i> SHOW TRACKS </button>
+            <ul class="tracklist" id="kill-this-love-tracks" style="display: none;">
+              <li><span><i class="fas fa-music"></i> Kill This Love</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Kill This Love')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Kill This Love', 'Kill This Love', '3:09', 'Teddy', 'Peaked #41 on Billboard Hot 100')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Don't Know What to Do</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Don\'t Know What to Do')"><i class="fas fa-play"></i></button>
+                  <button
+                    onclick="showSongInfo('Don\'t Know What to Do', 'Kill This Love', '3:21', 'Teddy', 'Fan favorite')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Kick It</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Kick It')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Kick It', 'Kill This Love', '3:11', 'Teddy', '')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+              <li><span><i class="fas fa-music"></i> Hope Not</span> <span class="track-actions"><button
+                    onclick="playOnYouTube('BLACKPINK Hope Not')"><i class="fas fa-play"></i></button> <button
+                    onclick="showSongInfo('Hope Not', 'Kill This Love', '3:11', 'Teddy', 'Ballad')"><i
+                      class="fas fa-info-circle"></i></button></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NON-ALBUM SINGLES SECTION -->
+    <section id="singles-section" class="filter-section" data-filter="singles">
+      <div class="section-header">
+        <h2 class="section-title">🎵 non-album singles</h2>
+        <p class="section-desc">Iconic tracks released outside of studio albums</p>
+      </div>
+
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/34/71/39/3471399473ec7fe54143ef8bed4b50e8.jpg" alt="Boombayah">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK Boombayah')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>Boombayah</h4>
+            <p>2016 · Debut Single</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/79/67/37/7967372683e973ec04377c31973ac916.jpg" alt="Whistle">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK Whistle')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>Whistle</h4>
+            <p>2016 · First Win</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/8e/af/47/8eaf474f398204fe4689a01540bf2dc0.jpg" alt="Playing with Fire">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK Playing with Fire')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>Playing with Fire</h4>
+            <p>2016 · Square Two</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/5c/17/e6/5c17e61bde5cc8c23b767be366500749.jpg" alt="Stay">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK Stay')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>Stay</h4>
+            <p>2016 · Ballad</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/3b/89/5f/3b895fd908faa777f8b64458a605b1a5.jpg"
+              alt="As If It's Your Last">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK As If It\'s Your Last')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>As If It's Your Last</h4>
+            <p>2017 · Pre-album</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-image">
+            <img src="https://i.pinimg.com/736x/d0/92/6f/d0926f7cefb748bec79cc479f884c93a.jpg" alt="The Girls">
+            <div class="featured-overlay">
+              <button class="play-btn small" onclick="playOnYouTube('BLACKPINK The Girls')"><i
+                  class="fas fa-play"></i></button>
+            </div>
+          </div>
+          <div class="featured-info">
+            <h4>The Girls</h4>
+            <p>2023 · Game OST</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLABORATIONS SECTION -->
+    <section id="collab-section" class="filter-section" data-filter="collab">
+      <div class="section-header">
+        <h2 class="section-title">🤝 collaborations</h2>
+        <p class="section-desc">Global hits with international artists</p>
+      </div>
+
+      <div class="collab-grid">
+        <div class="collab-card">
+          <div class="collab-artists">
+            <img src="https://i.pinimg.com/736x/38/b2/54/38b2541294d1514e29de2b341706cf9d.jpg" alt="Dua Lipa"
+              class="artist-img">
+            <span class="plus-icon"><i class="fas fa-plus"></i></span>
+            <img src="https://i.pinimg.com/736x/8d/c9/1e/8dc91e7c6337c8f2fbd5c6bcc0853140.jpg" alt="BLACKPINK"
+              class="artist-img">
+          </div>
+          <h3>Kiss and Make Up</h3>
+          <p class="collab-year">2018 · Dua Lipa: Complete Edition</p>
+          <p class="collab-desc">Bilingual track that blended their styles perfectly</p>
+          <div class="collab-actions">
+            <button class="collab-btn"
+              onclick="showSongInfo('Kiss and Make Up', 'Dua Lipa: Complete Edition', '3:10', 'Dua Lipa, Teddy', 'Bilingual track')"><i
+                class="fas fa-info-circle"></i> Info</button>
+          </div>
+        </div>
+        <div class="collab-card">
+          <div class="collab-artists">
+            <img src="https://i.pinimg.com/736x/b9/a8/fb/b9a8fb2e8065e9de816026fcb69c02da.jpg" alt="Lady Gaga"
+              class="artist-img">
+            <span class="plus-icon"><i class="fas fa-plus"></i></span>
+            <img src="https://i.pinimg.com/736x/8d/c9/1e/8dc91e7c6337c8f2fbd5c6bcc0853140.jpg" alt="BLACKPINK"
+              class="artist-img">
+          </div>
+          <h3>Sour Candy</h3>
+          <p class="collab-year">2020 · Chromatica</p>
+          <p class="collab-desc">Dance-pop hit from Lady Gaga's album</p>
+          <div class="collab-actions">
+            <button class="collab-btn"
+              onclick="showSongInfo('Sour Candy', 'Chromatica', '2:38', 'Lady Gaga, Teddy', 'Dance-pop hit')"><i
+                class="fas fa-info-circle"></i> Info</button>
+          </div>
+        </div>
+        <div class="collab-card">
+          <div class="collab-artists">
+            <img src="https://i.pinimg.com/736x/d6/6e/e8/d66ee8e2c661170ea1aa3b8eaf944c0c.jpg" alt="Selena Gomez"
+              class="artist-img">
+            <span class="plus-icon"><i class="fas fa-plus"></i></span>
+            <img src="https://i.pinimg.com/736x/8d/c9/1e/8dc91e7c6337c8f2fbd5c6bcc0853140.jpg" alt="BLACKPINK"
+              class="artist-img">
+          </div>
+          <h3>Ice Cream</h3>
+          <p class="collab-year">2020 · The Album</p>
+          <p class="collab-desc">#13 on Billboard Hot 100, sweet summer bop</p>
+          <div class="collab-actions">
+            <button class="collab-btn"
+              onclick="showSongInfo('Ice Cream', 'The Album', '2:56', 'Bekuh BOOM, Victoria Monét, Teddy, Selena Gomez', 'Peaked #13 on Billboard Hot 100')"><i
+                class="fas fa-info-circle"></i> Info</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLO WORKS SECTION -->
+    <section id="solo-section" class="filter-section" data-filter="solo">
+      <!-- SOLO GUIDE TEXT - CENTERED LIKE OTHER HEADERS -->
+      <div class="section-header solo-guide-header">
+        <h2 class="section-title">👑 solo works</h2>
+        <p class="section-desc">Click on any member below to explore their individual discography including solo albums,
+          singles, and featured tracks</p>
+      </div>
+
+      <!-- SOLO MEMBER TABS - WITHOUT IMAGES -->
+      <div class="solo-tabs-container">
+        <div class="solo-tabs">
+          <button class="solo-tab active" data-member="jennie">JENNIE</button>
+          <button class="solo-tab" data-member="rose">ROSÉ</button>
+          <button class="solo-tab" data-member="lisa">LISA</button>
+          <button class="solo-tab" data-member="jisoo">JISOO</button>
+        </div>
+      </div>
+
+      <!-- JENNIE SECTION -->
+      <section id="jennie-section" class="member-section active" data-member="jennie">
+        <div class="member-header">
+          <h2>JENNIE</h2>
+          <p>The Ruby Era · Solo Artist · Songwriter</p>
+        </div>
+
+        <!-- Albums - 2 columns grid -->
+        <div class="album-section">
+          <h3 class="section-title"><i class="fas fa-compact-disc"></i> STUDIO ALBUMS & SINGLES</h3>
+
+          <div class="solo-albums-grid">
+            <!-- Ruby Album -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/81/aa/3f/81aa3fc12e57ac8b5ab5aa6b988200db.jpg" alt="Ruby"
+                    onerror="this.src='https://via.placeholder.com/120x120/ff1493/ffffff?text=RUBY'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>RUBY</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> March 7, 2025</span>
+                    <span><i class="fas fa-music"></i> 15 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">PRE-RELEASE</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="jennie-ruby">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS (15)
+                </button>
+                <ul class="tracklist" id="jennie-ruby-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Mantra</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Mantra')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Mantra', 'RUBY', '2:45', 'Jennie, Zico', 'Title track, first single from Ruby')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Love Hangover (feat. Dominic Fike)</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Love Hangover')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Love Hangover', 'RUBY', '3:12', 'Jennie, Dominic Fike', 'Collaboration with Dominic Fike')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> ZEN</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie ZEN')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('ZEN', 'RUBY', '2:58', 'Jennie', 'Intro track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Damn Right (feat. Childish Gambino & Kali
+                      Uchis)</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Damn Right')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Damn Right', 'RUBY', '3:45', 'Jennie, Childish Gambino, Kali Uchis', 'Star-studded collaboration')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Seoul City</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Seoul City')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Seoul City', 'RUBY', '3:01', 'Jennie', 'Tribute to her hometown')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Filter</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Filter')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Filter', 'RUBY', '2:50', 'Jennie', 'R&B track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Twin</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie Twin')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Twin', 'RUBY', '3:15', 'Jennie', 'Emotional ballad')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> F.T.S.</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie FTS')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('F.T.S.', 'RUBY', '2:55', 'Jennie', 'Empowerment anthem')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- SOLO Singles Album -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/34/71/39/3471399473ec7fe54143ef8bed4b50e8.jpg"
+                    alt="Solo Collection"
+                    onerror="this.src='https://via.placeholder.com/120x120/ff1493/ffffff?text=SOLO'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>SOLO · The Singles</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> 2018-2024</span>
+                    <span><i class="fas fa-music"></i> Collection</span>
+                  </div>
+                  <div class="solo-album-badge">PLATINUM</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="jennie-singles">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS
+                </button>
+                <ul class="tracklist" id="jennie-singles-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> SOLO</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie SOLO')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('SOLO', 'SOLO Single', '2:49', 'Teddy', 'Jennie\'s debut solo, iconic choreography')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> You & Me</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie You and Me')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('You & Me', 'Special Single', '2:59', 'Teddy', 'Originally from The Show tour')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> You & Me (Coachella Version)</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jennie You and Me Coachella')"><i
+                          class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('You & Me (Coachella)', 'Special Single', '3:05', 'Teddy', 'Performed at Coachella 2023')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Non-album tracks / Features -->
+        <div class="non-album-tracks">
+          <h3 class="section-title"><i class="fas fa-star"></i> NON-ALBUM TRACKS & FEATURES</h3>
+          <div class="tracks-grid">
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Spot!</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2024 · with Zico</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('Zico Jennie Spot')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>One of the Girls</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2023 · with The Weeknd, Lily-Rose Depp</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('The Weeknd Jennie One of the Girls')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Slow Motion</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2022 · with Matt Champion</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('Matt Champion Jennie Slow Motion')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Special</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2022 · with LeeHi</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('LeeHi Jennie Special')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROSÉ SECTION -->
+      <section id="rose-section" class="member-section" data-member="rose">
+        <div class="member-header">
+          <h2>ROSÉ</h2>
+          <p>The rosie Era · Global Sensation · YG's Main Vocal</p>
+        </div>
+
+        <!-- Albums - 2 columns grid -->
+        <div class="album-section">
+          <h3 class="section-title"><i class="fas fa-compact-disc"></i> STUDIO ALBUMS & SINGLES</h3>
+
+          <div class="solo-albums-grid">
+            <!-- rosie Album -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/f7/06/f4/f706f493d033e402e5af19b2ae511178.jpg" alt="rosie"
+                    onerror="this.src='https://via.placeholder.com/120x120/ffffff/000000?text=rosie'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>rosie</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> December 6, 2024</span>
+                    <span><i class="fas fa-music"></i> 12 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">DOUBLE PLATINUM</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="rose-rosie">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS (12)
+                </button>
+                <ul class="tracklist" id="rose-rosie-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> APT. (with Bruno Mars)</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé APT Bruno Mars')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('APT.', 'rosie', '2:55', 'Rosé, Bruno Mars', 'First K-pop female solo in UK Top 10, viral global hit')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> number one girl</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé number one girl')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('number one girl', 'rosie', '3:20', 'Rosé', 'Emotional ballad')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> 3am</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé 3am')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('3am', 'rosie', '2:58', 'Rosé', 'R&B track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Two Years</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé Two Years')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Two Years', 'rosie', '3:15', 'Rosé', 'Fan favorite')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> toxic till the end</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé toxic till the end')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('toxic till the end', 'rosie', '3:30', 'Rosé', 'Breakup anthem')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> dance all night</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé dance all night')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('dance all night', 'rosie', '2:45', 'Rosé', 'Upbeat track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> stay a little longer</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé stay a little longer')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('stay a little longer', 'rosie', '3:50', 'Rosé', 'Closing track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> not the same</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé not the same')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('not the same', 'rosie', '3:05', 'Rosé', 'Acoustic version included')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- R Single -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/3b/89/5f/3b895fd908faa777f8b64458a605b1a5.jpg" alt="R"
+                    onerror="this.src='https://via.placeholder.com/120x120/000000/ffffff?text=R'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>R - Single Album</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> March 12, 2021</span>
+                    <span><i class="fas fa-music"></i> 2 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">PLATINUM</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="rose-r">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS
+                </button>
+                <ul class="tracklist" id="rose-r-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> On The Ground</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé On The Ground')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('On The Ground', 'R', '2:48', 'Rosé, Teddy', '#43 UK, 90K+ units, debut single')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Gone</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Rosé Gone')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Gone', 'R', '3:27', 'Rosé, Teddy', 'B-side track, emotional ballad')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Non-album tracks -->
+        <div class="non-album-tracks">
+          <h3 class="section-title"><i class="fas fa-star"></i> NON-ALBUM TRACKS</h3>
+          <div class="tracks-grid">
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Hard to Love</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2022 · Born Pink (Solo Track)</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('BLACKPINK Hard to Love')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Final Love Song</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2021 · TV Appearance</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('Rosé Final Love Song')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LISA SECTION -->
+      <section id="lisa-section" class="member-section" data-member="lisa">
+        <div class="member-header">
+          <h2>LISA</h2>
+          <p>Alter Ego Era · Dance Icon · Global Star</p>
+        </div>
+
+        <!-- Albums - 2 columns grid -->
+        <div class="album-section">
+          <h3 class="section-title"><i class="fas fa-compact-disc"></i> STUDIO ALBUMS & SINGLES</h3>
+
+          <div class="solo-albums-grid">
+            <!-- Alter Ego Album -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/3e/11/33/3e1133e1685b80c7c974624e3b69774c.jpg" alt="Alter Ego"
+                    onerror="this.src='https://via.placeholder.com/120x120/ffd700/000000?text=ALTER+EGO'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>Alter Ego</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> February 28, 2025</span>
+                    <span><i class="fas fa-music"></i> 12 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">PRE-RELEASE</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="lisa-alterego">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS (12)
+                </button>
+                <ul class="tracklist" id="lisa-alterego-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Rockstar</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa Rockstar')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Rockstar', 'Alter Ego', '2:58', 'Lisa', 'First under LLOUD label, global hit')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> New Woman (feat. Rosalía)</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa New Woman Rosalía')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('New Woman', 'Alter Ego', '3:15', 'Lisa, Rosalía', 'Collaboration with Rosalía')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Moonlit Floor</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa Moonlit Floor')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Moonlit Floor', 'Alter Ego', '3:05', 'Lisa', 'R&B track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> When I'm With You</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa When I\'m With You')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('When I\'m With You', 'Alter Ego', '3:20', 'Lisa', 'Fan dedication')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> FXCK UP THE WORLD</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa FXCK UP THE WORLD')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('FXCK UP THE WORLD', 'Alter Ego', '2:50', 'Lisa', 'Empowerment anthem')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Rap Goddess</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa Rap Goddess')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Rap Goddess', 'Alter Ego', '2:45', 'Lisa', 'Hip-hop track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- LALISA Single -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/5c/17/e6/5c17e61bde5cc8c23b767be366500749.jpg" alt="LALISA"
+                    onerror="this.src='https://via.placeholder.com/120x120/ffd700/ff1493?text=LALISA'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>LALISA - Single Album</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> September 10, 2021</span>
+                    <span><i class="fas fa-music"></i> 2 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">DOUBLE PLATINUM</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="lisa-lalisa">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS
+                </button>
+                <ul class="tracklist" id="lisa-lalisa-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> LALISA</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa LALISA')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('LALISA', 'LALISA', '3:20', 'Teddy', '#68 UK, 80K+ units, named after birth name')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Money</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Lisa Money')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Money', 'LALISA', '2:48', 'Teddy', '#46 UK, 206K+ units, most successful solo song')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Non-album tracks / Features -->
+        <div class="non-album-tracks">
+          <h3 class="section-title"><i class="fas fa-star"></i> NON-ALBUM TRACKS & FEATURES</h3>
+          <div class="tracks-grid">
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Shoong!</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2023 · with Taeyang</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('Taeyang Lisa Shoong')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>SG</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2021 · with DJ Snake, Ozuna, Megan Thee Stallion</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('DJ Snake SG Lisa')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- JISOO SECTION -->
+      <section id="jisoo-section" class="member-section" data-member="jisoo">
+        <div class="member-header">
+          <h2>JISOO</h2>
+          <p>AMORTAGE Era · Visual Queen · Actress</p>
+        </div>
+
+        <!-- Albums - 2 columns grid -->
+        <div class="album-section">
+          <h3 class="section-title"><i class="fas fa-compact-disc"></i> MINI ALBUMS & SINGLES</h3>
+
+          <div class="solo-albums-grid">
+            <!-- AMORTAGE Mini Album -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/5d/f7/44/5df7449d0403ea3aff39430fd53c1f6f.jpg" alt="AMORTAGE"
+                    onerror="this.src='https://via.placeholder.com/120x120/ffb6c1/ff1493?text=AMORTAGE'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>AMORTAGE</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> February 14, 2025</span>
+                    <span><i class="fas fa-music"></i> 4 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">VALENTINE'S RELEASE</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="jisoo-amortage">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS (4)
+                </button>
+                <ul class="tracklist" id="jisoo-amortage-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Earthquake</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo Earthquake')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Earthquake', 'AMORTAGE', '3:05', 'Jisoo', 'Title track, powerful choreography')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Your Love</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo Your Love')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Your Love', 'AMORTAGE', '3:20', 'Jisoo', 'Romantic ballad')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Tears</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo Tears')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Tears', 'AMORTAGE', '3:45', 'Jisoo', 'Emotional track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Winter Love</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo Winter Love')"><i class="fas fa-play"></i></button>
+                      <button onclick="showSongInfo('Winter Love', 'AMORTAGE', '3:30', 'Jisoo', 'Seasonal track')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ME Single -->
+            <div class="solo-album-card">
+              <div class="solo-album-header">
+                <div class="solo-album-cover">
+                  <img src="https://i.pinimg.com/736x/79/67/37/7967372683e973ec04377c31973ac916.jpg" alt="ME"
+                    onerror="this.src='https://via.placeholder.com/120x120/ffb6c1/000000?text=ME'">
+                </div>
+                <div class="solo-album-info">
+                  <h3>ME - Single Album</h3>
+                  <div class="solo-album-meta">
+                    <span><i class="far fa-calendar-alt"></i> March 31, 2023</span>
+                    <span><i class="fas fa-music"></i> 2 Tracks</span>
+                  </div>
+                  <div class="solo-album-badge">PLATINUM</div>
+                </div>
+              </div>
+
+              <div class="tracklist-container">
+                <button class="show-tracks-btn" data-album="jisoo-me">
+                  <i class="fas fa-list"></i> SHOW ALL TRACKS
+                </button>
+                <ul class="tracklist" id="jisoo-me-tracks" style="display: none;">
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> Flower</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo Flower')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('Flower', 'ME', '2:53', 'Jisoo, Teddy', '#2 Billboard Global 200, iconic point dance')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="track-info"><i class="fas fa-music"></i> All Eyes On Me</span>
+                    <span class="track-actions">
+                      <button onclick="playOnYouTube('Jisoo All Eyes On Me')"><i class="fas fa-play"></i></button>
+                      <button
+                        onclick="showSongInfo('All Eyes On Me', 'ME', '2:58', 'Jisoo, Teddy', '#78 Billboard Global 200')"><i
+                          class="fas fa-info-circle"></i></button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Non-album tracks / OSTs -->
+        <div class="non-album-tracks">
+          <h3 class="section-title"><i class="fas fa-star"></i> OSTs & SPECIAL TRACKS</h3>
+          <div class="tracks-grid">
+            <div class="track-card">
+              <div class="track-card-info">
+                <h4>Let's Say Goodbye</h4>
+                <p><i class="fas fa-calendar-alt"></i> 2023 · TV OST</p>
+              </div>
+              <button class="play-track-btn" onclick="playOnYouTube('Jisoo Let\'s Say Goodbye')">
+                <i class="fas fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- MODAL for song info -->
+  <div id="songModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-compact-disc"></i>
+        <h2 id="modalTitle">Song Title</h2>
+      </div>
+      <div id="modalInfo" class="modal-info">
+        <div class="info-row">
+          <i class="fas fa-album"></i>
+          <span><strong>Album:</strong> <span id="modalAlbum"></span></span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-clock"></i>
+          <span><strong>Length:</strong> <span id="modalLength"></span></span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-pen"></i>
+          <span><strong>Writers:</strong> <span id="modalWriters"></span></span>
+        </div>
+        <div class="info-row fact-row">
+          <i class="fas fa-star"></i>
+          <span><strong>Fun Fact:</strong> <span id="modalFact"></span></span>
+        </div>
+      </div>
+      <div class="modal-links">
+        <a href="#" id="youtubeLink" target="_blank" class="modal-link youtube"><i class="fab fa-youtube"></i>
+          YouTube</a>
+        <a href="#" id="spotifyLink" target="_blank" class="modal-link spotify"><i class="fab fa-spotify"></i>
+          Spotify</a>
+        <a href="#" id="appleLink" target="_blank" class="modal-link apple"><i class="fab fa-apple"></i> Apple Music</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer loaded from common file -->
+  <div include-html="footer.html"></div>
+
+  <!-- back to top -->
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Load scripts -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/music.js"></script>
+</body>
+
+</html>
