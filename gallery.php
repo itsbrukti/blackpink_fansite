@@ -11,24 +11,26 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- external CSS - only gallery styles, no nav/footer -->
-  <link rel="stylesheet" href="assets/css/gallery.css">
+  <!-- external CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
 </head>
 
 <body>
   <!-- Navigation loaded from common file -->
   <div include-html="nav.html"></div>
-  <div class="gallery-header">
-    <div class="gallery-header-content">
-      <h1 class="page-title">GALLERY</h1>
-      <p class="page-subtitle">moments with blackpink</p>
+
+  <!-- Gallery Hero Section -->
+  <div class="gallery-hero">
+    <div class="gallery-hero-overlay"></div>
+    <div class="gallery-hero-content">
+      <h1 class="gallery-hero-title">BLACKPINK <span>GALLERY</span></h1>
+      <p class="gallery-hero-subtitle">moments with blackpink</p>
     </div>
   </div>
 
   <main class="gallery-page">
     <div class="container">
-
 
       <!-- Filter tabs - all categories -->
       <div class="gallery-filters">
@@ -44,41 +46,79 @@
 
       <!-- Sub-filters for pair categories -->
       <div class="sub-filters">
-        <span class="sub-filter-label">pairs:</span>
+        <span class="sub-filter-label"><i class="fas fa-heart"></i> pairs</span>
         <button class="sub-filter-btn" data-filter="chelisa">Chelisa</button>
         <button class="sub-filter-btn" data-filter="jenlisa">Jenlisa</button>
-        <button class="sub-filter-btn" data-filter="Lisoo">Lisoo</button>
-        <button class="sub-filter-btn" data-filter="JenChaeng">JenChaeng</button>
-        <button class="sub-filter-btn" data-filter="ChaeSoo">ChaeSoo</button>
-        <button class="sub-filter-btn" data-filter="JenSoo">JenSoo</button>
+        <button class="sub-filter-btn" data-filter="lisoo">Lisoo</button>
+        <button class="sub-filter-btn" data-filter="jenchaeng">JenChaeng</button>
+        <button class="sub-filter-btn" data-filter="chaesoo">ChaeSoo</button>
+        <button class="sub-filter-btn" data-filter="jensoo">JenSoo</button>
       </div>
 
+      <!-- Gallery Grid -->
       <div class="gallery-grid" id="galleryGrid">
-        <?php include("includes/load_gallery.php"); ?>
+        <?php 
+        // Include database connection from config folder
+        require_once __DIR__ . '/config/db.php';
+        
+        // Get all photos from gallery table
+        $result = $conn->query("SELECT * FROM gallery ORDER BY id DESC");
+        
+        if ($result && $result->num_rows > 0):
+          while($row = $result->fetch_assoc()):
+            $category = strtolower($row['category']);
+        ?>
+        <div class="gallery-item" data-category="<?php echo $category; ?>" data-id="<?php echo $row['id']; ?>">
+          <img src="<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['category']); ?>" loading="lazy">
+          <div class="item-overlay">
+            <div class="item-badge">
+              <span class="item-category"><?php echo htmlspecialchars($row['label']); ?></span>
+            </div>
+            <div class="item-actions">
+              <button class="view-btn" onclick="openLightbox(<?php echo $row['id']; ?>)">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <?php 
+          endwhile;
+        else:
+        ?>
+        <div class="no-images">
+          <i class="fas fa-images"></i>
+          <h3>No Photos Yet</h3>
+          <p>Check back soon for new photos!</p>
+        </div>
+        <?php endif; ?>
       </div>
+    </div>
+  </main>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <div class="lightbox-content-wrapper">
+      <img class="lightbox-content" id="lightboxImg">
+      <div class="lightbox-caption" id="caption"></div>
+      <button class="lightbox-download-btn" onclick="downloadImage()">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+  </div>
 
+  <!-- Footer loaded from common file -->
+  <div include-html="footer.php"></div>
 
-      <!-- Lightbox Modal -->
-      <div id="lightbox" class="lightbox">
-        <span class="close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg">
-        <div id="caption" class="lightbox-caption"></div>
-        <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
-      </div>
+  <!-- back to top -->
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-      <!-- Footer loaded from common file -->
-      <div include-html="footer.html"></div>
-
-      <!-- back to top -->
-      <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
-      <!-- Load scripts -->
-      <script src="assets/js/theme.js"></script>
-      <script src="assets/js/include.js"></script>
-      <script src="assets/js/gallery.js"></script>
-      <script src="assets/js/main.js"></script>
+  <!-- Load scripts -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/gallery.js"></script>
 </body>
 
 </html>

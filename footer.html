@@ -1,4 +1,4 @@
-<!-- footer.html - Common Footer with Subscribe Form -->
+<!-- footer.html - Common Footer with Subscribe Form (Database) -->
 <footer class="footer">
   <div class="footer-wave">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -11,17 +11,69 @@
   <div class="footer-content">
     <div class="footer-container">
       
-      <!-- ===== NEW SUBSCRIBE SECTION ===== -->
+      <!-- Subscribe Section with Database -->
       <div class="footer-subscribe">
         <div class="subscribe-content">
           <div class="subscribe-text">
             <h3 class="subscribe-title">never miss an update</h3>
             <p class="subscribe-description">Subscribe to get the latest BLACKPINK news, releases, and exclusive content directly in your inbox.</p>
           </div>
-          <form class="subscribe-form" id="subscribeForm" onsubmit="event.preventDefault(); alert('Thanks for subscribing! ✨'); this.reset();">
+          
+          <?php
+          // Include database connection
+          require_once __DIR__ . '/../config/db.php';
+          
+          $subscribe_message = '';
+          $message_type = '';
+          
+          if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe_btn'])) {
+              $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+              
+              if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                  // Check if email already exists
+                  $check = $conn->prepare("SELECT id FROM subscribers WHERE email = ?");
+                  if ($check) {
+                      $check->bind_param("s", $email);
+                      $check->execute();
+                      $check->store_result();
+                      
+                      if ($check->num_rows > 0) {
+                          $subscribe_message = "📧 This email is already subscribed!";
+                          $message_type = "warning";
+                      } else {
+                          // Insert new subscriber
+                          $stmt = $conn->prepare("INSERT INTO subscribers (email, is_active) VALUES (?, 1)");
+                          if ($stmt) {
+                              $stmt->bind_param("s", $email);
+                              if ($stmt->execute()) {
+                                  $subscribe_message = "🎉 Thanks for subscribing! You're now a BLINK.";
+                                  $message_type = "success";
+                              } else {
+                                  $subscribe_message = "❌ Something went wrong. Please try again.";
+                                  $message_type = "error";
+                              }
+                              $stmt->close();
+                          }
+                      }
+                      $check->close();
+                  }
+              } else {
+                  $subscribe_message = "⚠️ Please enter a valid email address.";
+                  $message_type = "error";
+              }
+          }
+          ?>
+          
+          <?php if($subscribe_message): ?>
+          <div class="subscribe-message <?php echo $message_type; ?>">
+              <?php echo $subscribe_message; ?>
+          </div>
+          <?php endif; ?>
+          
+          <form class="subscribe-form" method="POST" action="">
             <div class="form-group">
-              <input type="email" class="subscribe-input" placeholder="Your email address" required>
-              <button type="submit" class="subscribe-button">
+              <input type="email" name="email" class="subscribe-input" placeholder="Your email address" required>
+              <button type="submit" name="subscribe_btn" class="subscribe-button">
                 <span>subscribe</span>
                 <i class="fas fa-paper-plane"></i>
               </button>
@@ -55,7 +107,7 @@
             <a href="index.html"><i class="fas fa-chevron-right"></i> home</a>
             <a href="members.html"><i class="fas fa-chevron-right"></i> members</a>
             <a href="music.html"><i class="fas fa-chevron-right"></i> music</a>
-            <a href="gallery.html"><i class="fas fa-chevron-right"></i> gallery</a>
+            <a href="gallery.php"><i class="fas fa-chevron-right"></i> gallery</a>
             <a href="about.html"><i class="fas fa-chevron-right"></i> about</a>
           </div>
           <div class="footer-links-column">
@@ -82,7 +134,19 @@
           <p class="credit">created with <i class="fas fa-heart" style="color: #ff69b4;"></i> · no copyright infringement intended</p>
         </div>
         <div class="footer-stats">
-          <span class="stat-item"><i class="fas fa-envelope"></i> 10k+ subscribers</span>
+          <span class="stat-item"><i class="fas fa-envelope"></i> 
+            <?php 
+            // Re-include connection for subscriber count
+            require_once __DIR__ . '/../config/db.php';
+            $count_result = $conn->query("SELECT COUNT(*) as total FROM subscribers WHERE is_active = 1");
+            if ($count_result) {
+                $count = $count_result->fetch_assoc();
+                echo number_format($count['total']) . '+ subscribers';
+            } else {
+                echo '0+ subscribers';
+            }
+            ?>
+          </span>
           <span class="stat-item"><i class="fas fa-users"></i> 1M+ monthly visitors</span>
         </div>
       </div>
