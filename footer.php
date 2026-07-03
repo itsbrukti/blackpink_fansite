@@ -1,4 +1,274 @@
-<!-- footer.php - Common Footer with Subscribe Form (Database) -->
+<?php
+// Start session at the VERY TOP before any HTML output
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check for messages passed via session
+$subscribe_message = '';
+$message_type = '';
+if (isset($_SESSION['subscribe_message'])) {
+    $subscribe_message = $_SESSION['subscribe_message'];
+    $message_type = $_SESSION['message_type'];
+    unset($_SESSION['subscribe_message']);
+    unset($_SESSION['message_type']);
+}
+?>
+<!-- footer.php - Common Footer with Subscribe Form -->
+<style>
+/* FORCE FOOTER PINK BACKGROUND - OVERRIDE ANYTHING */
+.footer {
+  background: rgba(235, 195, 210, 0.95) !important;
+  color: #4a4a4a !important;
+}
+
+body.dark .footer {
+  background: rgba(18, 18, 18, 0.95) !important;
+  color: #f0f0f0 !important;
+}
+
+.footer-wave svg path {
+  fill: rgba(235, 195, 210, 0.95) !important;
+}
+
+body.dark .footer-wave svg path {
+  fill: rgba(18, 18, 18, 0.95) !important;
+}
+
+.footer-subscribe {
+  background: rgba(225, 175, 195, 0.5) !important;
+}
+
+body.dark .footer-subscribe {
+  background: rgba(18, 18, 18, 0.5) !important;
+}
+
+/* ===== FOOTER TEXT COLORS - BRIGHT MODE ===== */
+.footer .subscribe-title {
+  color: #c45d7a !important; /* Dark pink for visibility */
+}
+
+body.dark .footer .subscribe-title {
+  color: #ffb6c1 !important;
+}
+
+.footer .subscribe-description {
+  color: #4a4a4a !important;
+}
+
+body.dark .footer .subscribe-description {
+  color: #ccc !important;
+}
+
+.footer .form-note {
+  color: #6b6b6b !important;
+}
+
+body.dark .footer .form-note {
+  color: #999 !important;
+}
+
+.footer .footer-logo {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-logo {
+  color: #ffb6c1 !important;
+}
+
+.footer .footer-logo span {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-logo span {
+  color: #ff69b4 !important;
+}
+
+.footer .footer-tagline {
+  color: #4a4a4a !important;
+}
+
+body.dark .footer .footer-tagline {
+  color: #ccc !important;
+}
+
+.footer .footer-links-column h4 {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-links-column h4 {
+  color: #ffb6c1 !important;
+}
+
+.footer .footer-links-column a {
+  color: #4a4a4a !important;
+}
+
+body.dark .footer .footer-links-column a {
+  color: #ccc !important;
+}
+
+.footer .footer-links-column a i {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-links-column a i {
+  color: #ffb6c1 !important;
+}
+
+.footer .footer-links-column a:hover {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-links-column a:hover {
+  color: #ffb6c1 !important;
+}
+
+.footer .footer-copyright p {
+  color: #4a4a4a !important;
+}
+
+body.dark .footer .footer-copyright p {
+  color: #aaa !important;
+}
+
+.footer .footer-copyright .credit {
+  color: #6b6b6b !important;
+}
+
+body.dark .footer .footer-copyright .credit {
+  color: #888 !important;
+}
+
+.footer .footer-copyright .credit i {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .footer-copyright .credit i {
+  color: #ff69b4 !important;
+}
+
+.footer .stat-item {
+  color: #c45d7a !important;
+  background: rgba(196, 93, 122, 0.1) !important;
+  border-color: rgba(196, 93, 122, 0.2) !important;
+}
+
+body.dark .footer .stat-item {
+  color: #ffb6c1 !important;
+  background: rgba(255, 105, 180, 0.08) !important;
+  border-color: rgba(255, 105, 180, 0.2) !important;
+}
+
+.footer .stat-item i {
+  color: #c45d7a !important;
+}
+
+body.dark .footer .stat-item i {
+  color: #ffb6c1 !important;
+}
+
+/* ===== SUBSCRIBE INPUT ===== */
+.footer .subscribe-input {
+  color: #4a4a4a !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(196, 93, 122, 0.3) !important;
+}
+
+body.dark .footer .subscribe-input {
+  color: #f0f0f0 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 105, 180, 0.3) !important;
+}
+
+.footer .subscribe-input::placeholder {
+  color: #999 !important;
+}
+
+body.dark .footer .subscribe-input::placeholder {
+  color: #666 !important;
+}
+
+/* ===== SUBSCRIBE BUTTON ===== */
+.footer .subscribe-button {
+  background: linear-gradient(135deg, #c45d7a, #b35d7a) !important;
+  color: white !important;
+}
+
+.footer .subscribe-button:hover {
+  background: linear-gradient(135deg, #a04d6a, #8a3d5a) !important;
+  box-shadow: 0 10px 30px rgba(196, 93, 122, 0.4) !important;
+}
+
+body.dark .footer .subscribe-button {
+  background: linear-gradient(135deg, #ff69b4, #ff1493) !important;
+}
+
+body.dark .footer .subscribe-button:hover {
+  background: linear-gradient(135deg, #ff1493, #e0128a) !important;
+}
+
+/* ===== SUBSCRIBE MESSAGE ===== */
+.footer .subscribe-message {
+  font-weight: 500 !important;
+}
+
+.footer .subscribe-message.success {
+  background: rgba(0, 184, 148, 0.15) !important;
+  color: #00a884 !important;
+  border: 1px solid #00b894 !important;
+}
+
+.footer .subscribe-message.error {
+  background: rgba(255, 71, 87, 0.15) !important;
+  color: #d63031 !important;
+  border: 1px solid #ff4757 !important;
+}
+
+.footer .subscribe-message.warning {
+  background: rgba(253, 203, 110, 0.15) !important;
+  color: #d48a20 !important;
+  border: 1px solid #fdcb6e !important;
+}
+
+body.dark .footer .subscribe-message.success {
+  background: rgba(0, 184, 148, 0.25) !important;
+  color: #55efc4 !important;
+}
+
+body.dark .footer .subscribe-message.error {
+  background: rgba(255, 71, 87, 0.25) !important;
+  color: #ff6b81 !important;
+}
+
+body.dark .footer .subscribe-message.warning {
+  background: rgba(253, 203, 110, 0.25) !important;
+  color: #fdcb6e !important;
+}
+
+/* ===== SUBSCRIBE MESSAGE ANIMATION ===== */
+.subscribe-message {
+  padding: 12px 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+  animation: slideDown 0.3s ease;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
 <footer class="footer">
   <div class="footer-wave">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -10,6 +280,8 @@
 
   <div class="footer-content">
     <div class="footer-container">
+      
+      <!-- Subscribe Section -->
       <div class="footer-subscribe">
         <div class="subscribe-content">
           <div class="subscribe-text">
@@ -17,51 +289,9 @@
             <p class="subscribe-description">Subscribe to get the latest BLACKPINK news, releases, and exclusive content directly in your inbox.</p>
           </div>
 
-          <?php
-          require_once __DIR__ . '/config/db.php';
-
-          $subscribe_message = '';
-          $message_type = '';
-
-          if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe_btn'])) {
-              $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-
-              if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  $check = $conn->prepare("SELECT id FROM subscribers WHERE email = ?");
-                  if ($check) {
-                      $check->bind_param("s", $email);
-                      $check->execute();
-                      $check->store_result();
-
-                      if ($check->num_rows > 0) {
-                          $subscribe_message = "📧 This email is already subscribed!";
-                          $message_type = "warning";
-                      } else {
-                          $stmt = $conn->prepare("INSERT INTO subscribers (email, is_active) VALUES (?, 1)");
-                          if ($stmt) {
-                              $stmt->bind_param("s", $email);
-                              if ($stmt->execute()) {
-                                  $subscribe_message = "🎉 Thanks for subscribing! You're now a BLINK.";
-                                  $message_type = "success";
-                              } else {
-                                  $subscribe_message = "❌ Something went wrong. Please try again.";
-                                  $message_type = "error";
-                              }
-                              $stmt->close();
-                          }
-                      }
-                      $check->close();
-                  }
-              } else {
-                  $subscribe_message = "⚠️ Please enter a valid email address.";
-                  $message_type = "error";
-              }
-          }
-          ?>
-
-          <?php if ($subscribe_message): ?>
+          <?php if (!empty($subscribe_message)): ?>
           <div class="subscribe-message <?php echo $message_type; ?>">
-              <?php echo $subscribe_message; ?>
+              <?php echo htmlspecialchars($subscribe_message); ?>
           </div>
           <?php endif; ?>
 
@@ -78,30 +308,25 @@
         </div>
       </div>
 
+      <!-- Footer Main Content -->
       <div class="footer-main">
+        <!-- Brand Section -->
         <div class="footer-brand">
           <div class="footer-logo-wrapper">
             <div class="footer-logo">BLACKPINK<span>·blink</span></div>
             <div class="footer-heart">🖤💗</div>
           </div>
           <p class="footer-tagline">dedicated to the biggest blinks around the world</p>
-
-          <div class="footer-social">
-            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon spotify"><i class="fab fa-spotify"></i></a>
-            <a href="#" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
-          </div>
         </div>
 
+        <!-- Links Section -->
         <div class="footer-links-group">
           <div class="footer-links-column">
             <h4>explore</h4>
             <a href="index.html"><i class="fas fa-chevron-right"></i> home</a>
             <a href="members.html"><i class="fas fa-chevron-right"></i> members</a>
             <a href="music.html"><i class="fas fa-chevron-right"></i> music</a>
-            <a href="gallery.html"><i class="fas fa-chevron-right"></i> gallery</a>
+            <a href="gallery.php"><i class="fas fa-chevron-right"></i> gallery</a>
             <a href="about.html"><i class="fas fa-chevron-right"></i> about</a>
           </div>
           <div class="footer-links-column">
@@ -111,38 +336,35 @@
             <a href="members.html#rose"><i class="fas fa-chevron-right"></i> rosé</a>
             <a href="members.html#lisa"><i class="fas fa-chevron-right"></i> lisa</a>
           </div>
-          <div class="footer-links-column">
-            <h4>connect</h4>
-            <a href="#"><i class="fas fa-chevron-right"></i> instagram</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> youtube</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> spotify</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> twitter</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> tiktok</a>
-          </div>
         </div>
       </div>
 
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-copyright">
           <p>fan-based website · all information for blinks ♥</p>
           <p class="credit">created with <i class="fas fa-heart" style="color: #ff69b4;"></i> · no copyright infringement intended</p>
         </div>
         <div class="footer-stats">
-          <span class="stat-item"><i class="fas fa-envelope"></i>
-            <?php
-            require_once __DIR__ . '/config/db.php';
-            $count_result = $conn->query("SELECT COUNT(*) as total FROM subscribers WHERE is_active = 1");
-            if ($count_result) {
-                $count = $count_result->fetch_assoc();
-                echo number_format($count['total']) . '+ subscribers';
-            } else {
-                echo '0+ subscribers';
-            }
-            ?>
-          </span>
-          <span class="stat-item"><i class="fas fa-users"></i> 1M+ monthly visitors</span>
+          <span class="footer-stat-item"><i class="fas fa-envelope"></i> 1000+ subscribers</span>
+          <span class="footer-stat-item"><i class="fas fa-users"></i> 1M+ monthly visitors</span>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+// Auto-hide message after 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const message = document.querySelector('.subscribe-message');
+    if (message) {
+        setTimeout(function() {
+            message.style.opacity = '0';
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 500);
+        }, 5000);
+    }
+});
+</script>

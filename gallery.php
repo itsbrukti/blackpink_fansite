@@ -27,10 +27,21 @@
       <h1 class="gallery-hero-title">BLACKPINK <span>GALLERY</span></h1>
       <p class="gallery-hero-subtitle">moments with blackpink</p>
     </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>explore</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
   </div>
 
   <main class="gallery-page">
     <div class="container">
+
+      <!-- Filter Guide -->
+      <div class="filter-guide">
+        <h3>📸 discover moments</h3>
+        <p>Use the filters below to explore BLACKPINK's photos by category</p>
+        
 
       <!-- Filter tabs - all categories -->
       <div class="gallery-filters">
@@ -101,9 +112,7 @@
     <div class="lightbox-content-wrapper">
       <img class="lightbox-content" id="lightboxImg">
       <div class="lightbox-caption" id="caption"></div>
-      <button class="lightbox-download-btn" onclick="downloadImage()">
-        <i class="fas fa-download"></i> Download
-      </button>
+      
     </div>
     <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
     <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>

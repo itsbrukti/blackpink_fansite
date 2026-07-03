@@ -1,4 +1,9 @@
 <?php
+// Start session at the top
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/config/db.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -52,7 +57,7 @@ function sendConfirmationEmail($email, $token) {
         $mail->Subject = 'Please confirm your subscription';
 
         $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost:8000');
-        $confirmUrl = $baseUrl . '/subscribe.php?confirm=' . urlencode($token);
+        $confirmUrl = $baseUrl . '/blackpink_fansite/subscribe.php?confirm=' . urlencode($token);
 
         $mail->isHTML(true);
         $mail->Body = "<p>Hi there,</p><p>Please confirm your subscription by clicking the link below:</p><p><a href=\"$confirmUrl\">Confirm subscription</a></p><p>If you did not subscribe, you can ignore this email.</p>";
@@ -67,6 +72,7 @@ function sendConfirmationEmail($email, $token) {
 
 ensureSubscriberColumns($conn);
 
+// Handle confirmation
 if (isset($_GET['confirm']) && is_string($_GET['confirm']) && $_GET['confirm'] !== '') {
     $token = trim($_GET['confirm']);
     $stmt = $conn->prepare("SELECT id FROM subscribers WHERE verification_token = ?");
@@ -91,6 +97,7 @@ if (isset($_GET['confirm']) && is_string($_GET['confirm']) && $_GET['confirm'] !
     }
 }
 
+// Handle subscription form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe_btn'])) {
     $email = trim((string)($_POST['email'] ?? ''));
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -100,10 +107,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe_btn'])) {
         if ($check) {
             $check->bind_param('s', $email);
             $check->execute();
-            $check->store_result();
+            $result = $check->get_result();
 
-            if ($check->num_rows > 0) {
-                $existing = $check->get_result()->fetch_assoc();
+            if ($result && $result->num_rows > 0) {
+                $existing = $result->fetch_assoc();
                 if (!empty($existing['is_active'])) {
                     $subscribe_message = "📧 This email is already subscribed!";
                     $message_type = 'warning';
@@ -116,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['subscribe_btn'])) {
                         $update->close();
                     }
                     if (sendConfirmationEmail($email, $token)) {
-                        $subscribe_message = "📩 We sent a confirmation link to your email. Please check your inbox.";
+                        $subscribe_message = "📩 We sent a confirmation link to your email to subscribe. Please check your inbox.";
                         $message_type = 'success';
                     } else {
                         $subscribe_message = "⚠️ We could not send the confirmation email. Please try again later.";

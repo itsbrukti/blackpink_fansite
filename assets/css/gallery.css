@@ -1,4 +1,4 @@
-/* gallery.css - Professional Gallery Styles */
+/* gallery.css - Professional Gallery Styles with Full Screen Hero */
 
 * {
   margin: 0;
@@ -20,41 +20,34 @@ body.dark {
   color: #f0f0f0;
 }
 
-/* ===== GALLERY HERO ===== */
+/* ===== GALLERY HERO - FULL SCREEN ===== */
 .gallery-hero {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 390px;
+  height: calc(100vh - 80px) !important;
+  min-height: 500px !important;
+  max-height: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   margin-top: 0px;
-  margin-bottom: 40px;
-  background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('../images/blackpink.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 0 50px 50px;
+  margin-bottom: 0px;
   overflow: hidden;
-  padding: 60px 20px;
-  box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  padding: 40px 20px;
 }
 
 .gallery-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.3;
+  background-image: url('../images/blackpink.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* or cover */
+  filter: brightness(0.5);
   z-index: 0;
   border-radius: 0 0 50px 50px;
 }
@@ -62,7 +55,7 @@ body.dark {
 .gallery-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(255, 105, 180, 0.15));
   z-index: 1;
   border-radius: 0 0 50px 50px;
 }
@@ -72,6 +65,7 @@ body.dark {
   z-index: 2;
   max-width: 900px;
   padding: 20px;
+  transform: translateY(-20px);
 }
 
 .gallery-hero-title {
@@ -79,8 +73,8 @@ body.dark {
   font-weight: 900;
   font-family: 'Playfair Display', serif;
   margin-bottom: 10px;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  letter-spacing: 4px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  letter-spacing: 5px;
   color: white;
 }
 
@@ -103,11 +97,85 @@ body.dark {
 
 .gallery-hero-subtitle {
   font-size: 1.3rem;
-  margin-top: 15px;
-  letter-spacing: 6px;
+  margin-top: 12px;
+  letter-spacing: 5px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  gap: 6px;
+  animation: bounce 2s infinite;
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.scroll-indicator i {
+  font-size: 1rem;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ===== FILTER GUIDE ===== */
+.filter-guide {
+  text-align: center;
+  padding: 40px 20px 25px;
+  background: rgba(255, 105, 180, 0.03);
+  border-bottom: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.filter-guide h3 {
+  font-size: 1.4rem;
+  color: #ff69b4;
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+}
+
+.filter-guide p {
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.filter-guide .guide-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-guide .guide-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffb6c1;
+  font-size: 0.85rem;
+  background: rgba(255, 105, 180, 0.08);
+  padding: 6px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 105, 180, 0.15);
+}
+
+.filter-guide .guide-icon i {
+  color: #ff69b4;
+  font-size: 0.95rem;
 }
 
 /* ===== GALLERY PAGE ===== */
@@ -127,16 +195,16 @@ body.dark {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 25px 0 18px;
   flex-wrap: wrap;
 }
 
 .filter-btn {
-  padding: 10px 22px;
+  padding: 8px 18px;
   border: 2px solid #ff69b4;
   background: transparent;
   color: #ff69b4;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   border-radius: 40px;
   cursor: pointer;
@@ -171,9 +239,9 @@ body.dark .filter-btn.active {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   flex-wrap: wrap;
-  padding: 10px 20px;
+  padding: 8px 16px;
   background: rgba(255, 105, 180, 0.05);
   border-radius: 60px;
 }
@@ -181,8 +249,8 @@ body.dark .filter-btn.active {
 .sub-filter-label {
   font-weight: 600;
   color: #ff69b4;
-  margin-right: 10px;
-  font-size: 0.85rem;
+  margin-right: 8px;
+  font-size: 0.8rem;
   letter-spacing: 1px;
 }
 
@@ -191,11 +259,11 @@ body.dark .sub-filter-label {
 }
 
 .sub-filter-btn {
-  padding: 6px 14px;
+  padding: 5px 12px;
   border: 1px solid rgba(255, 105, 180, 0.3);
   background: transparent;
   color: #888;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   border-radius: 30px;
   cursor: pointer;
@@ -527,32 +595,64 @@ body.dark .gallery-item {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
+  .gallery-hero {
+    height: calc(100vh - 80px) !important;
+    min-height: 450px !important;
+  }
+  
   .gallery-hero-title {
     font-size: 3.5rem;
+    letter-spacing: 4px;
   }
 }
 
 @media (max-width: 768px) {
   .gallery-hero {
-    min-height: 300px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 40px 20px;
+    height: calc(100vh - 70px) !important;
+    min-height: 400px !important;
+    max-height: 600px;
+    padding: 30px 20px;
   }
 
   .gallery-hero-title {
     font-size: 2.5rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
   }
 
   .gallery-hero-subtitle {
     font-size: 1rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
   }
 
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
+  }
+
+  .scroll-indicator {
+    bottom: 15px;
+    font-size: 0.65rem;
+  }
+
+  .filter-guide {
+    padding: 30px 15px 20px;
+  }
+  
+  .filter-guide h3 {
+    font-size: 1.2rem;
+  }
+  
+  .filter-guide p {
+    font-size: 0.85rem;
+  }
+
+  .filter-guide .guide-icons {
+    gap: 10px;
+  }
+
+  .filter-guide .guide-icon {
+    font-size: 0.75rem;
+    padding: 5px 12px;
   }
 
   .lightbox-content {
@@ -593,18 +693,20 @@ body.dark .gallery-item {
 
 @media (max-width: 480px) {
   .gallery-hero {
-    min-height: 200px;
-    margin-top: 10px;
-    padding: 30px 15px;
+    height: calc(100vh - 65px) !important;
+    min-height: 350px !important;
+    max-height: 500px;
+    padding: 20px 15px;
   }
 
   .gallery-hero-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    letter-spacing: 2px;
   }
 
   .gallery-hero-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
   }
 
   .gallery-grid {
@@ -614,11 +716,21 @@ body.dark .gallery-item {
 
   .filter-btn {
     padding: 5px 12px;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .sub-filter-label {
     display: none;
+  }
+
+  .sub-filters {
+    padding: 6px 10px;
+    gap: 5px;
+  }
+
+  .sub-filter-btn {
+    padding: 4px 8px;
+    font-size: 0.6rem;
   }
 
   .lightbox-download-btn {
@@ -629,5 +741,13 @@ body.dark .gallery-item {
 
   .lightbox-download-btn i {
     font-size: 1.1rem;
+  }
+
+  .filter-guide h3 {
+    font-size: 1rem;
+  }
+
+  .filter-guide p {
+    font-size: 0.8rem;
   }
 }

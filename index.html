@@ -12,11 +12,159 @@
   <!-- external CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/index.css">
+  <!-- Admin access styles -->
+  <style>
+    /* Hidden admin trigger - invisible but clickable area */
+    .admin-trigger {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      z-index: 9999;
+      cursor: pointer;
+      opacity: 0;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    /* Admin popup - hidden by default */
+    .admin-popup {
+      position: fixed;
+      bottom: 60px;
+      left: 20px;
+      background: rgba(20, 20, 30, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 20px 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 105, 180, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+      transform: translateY(20px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      min-width: 200px;
+    }
+    
+    .admin-popup.show {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .admin-popup h4 {
+      color: #ff69b4;
+      font-size: 14px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .admin-popup a {
+      display: block;
+      color: #f0f0f0;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .admin-popup a:hover {
+      background: rgba(255, 105, 180, 0.15);
+      color: #ff69b4;
+      padding-left: 18px;
+    }
+    
+    .admin-popup a i {
+      margin-right: 10px;
+      color: #ff69b4;
+      width: 18px;
+    }
+    
+    .admin-popup .close-popup {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+    }
+    
+    .admin-popup .close-popup:hover {
+      color: #ff69b4;
+    }
+    
+    /* Secret hint */
+    .admin-hint {
+      position: fixed;
+      bottom: 55px;
+      left: 15px;
+      color: rgba(255, 255, 255, 0.08);
+      font-size: 9px;
+      letter-spacing: 1px;
+      font-family: 'Poppins', sans-serif;
+      z-index: 9997;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    
+    .admin-hint:hover {
+      color: rgba(255, 105, 180, 0.2);
+    }
+    
+    /* Tap indicator */
+    .tap-indicator {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 105, 180, 0.1);
+      border: 2px solid rgba(255, 105, 180, 0.2);
+      z-index: 9996;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    
+    .tap-indicator.active {
+      transform: scale(1);
+      opacity: 1;
+      animation: pulse 0.6s ease;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    
+    @media (max-width: 768px) {
+      .admin-popup {
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+        bottom: 70px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation loaded from common file -->
   <div include-html="nav.html"></div>
-
+  
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-overlay"></div>
@@ -79,9 +227,109 @@
   <!-- back to top -->
   <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
+  <!-- Hidden Admin Access - Only Add Photo -->
+  <button class="admin-trigger" id="adminTrigger" aria-label="Admin Access"></button>
+  <div class="admin-hint">⚡ admin</div>
+  <div class="tap-indicator" id="tapIndicator"></div>
+  
+  <!-- Admin Popup - Only Add Photo -->
+  <div class="admin-popup" id="adminPopup">
+    <button class="close-popup" id="closePopup">&times;</button>
+    <h4><i class="fas fa-lock" style="margin-right: 8px;"></i> Admin</h4>
+    <a href="admin/add_photo.php"><i class="fas fa-camera"></i> Add Photo</a>
+  </div>
+
   <!-- Load scripts in correct order -->
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/include.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <!-- Admin Access Script -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const adminTrigger = document.getElementById('adminTrigger');
+    const adminPopup = document.getElementById('adminPopup');
+    const closePopup = document.getElementById('closePopup');
+    const tapIndicator = document.getElementById('tapIndicator');
+    
+    let clickCount = 0;
+    let clickTimer = null;
+    let touchCount = 0;
+    let touchTimer = null;
+    
+    function showAdminPopup() {
+      adminPopup.classList.add('show');
+      
+      clearTimeout(window.popupTimeout);
+      window.popupTimeout = setTimeout(function() {
+        adminPopup.classList.remove('show');
+      }, 10000);
+    }
+    
+    function showTapIndicator() {
+      tapIndicator.classList.add('active');
+      setTimeout(function() {
+        tapIndicator.classList.remove('active');
+      }, 600);
+    }
+    
+    // Mouse: Triple-click
+    adminTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      showTapIndicator();
+      
+      clickCount++;
+      
+      if (clickCount === 1) {
+        clickTimer = setTimeout(function() {
+          clickCount = 0;
+        }, 500);
+      } else if (clickCount === 3) {
+        clickCount = 0;
+        clearTimeout(clickTimer);
+        showAdminPopup();
+      }
+    });
+    
+    // Touch: Triple-tap
+    adminTrigger.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      showTapIndicator();
+      
+      touchCount++;
+      
+      if (touchCount === 1) {
+        touchTimer = setTimeout(function() {
+          touchCount = 0;
+        }, 500);
+      } else if (touchCount === 3) {
+        touchCount = 0;
+        clearTimeout(touchTimer);
+        showAdminPopup();
+      }
+    });
+    
+    // Close popup
+    closePopup.addEventListener('click', function() {
+      adminPopup.classList.remove('show');
+    });
+    
+    // Click outside to close
+    document.addEventListener('click', function(e) {
+      if (adminPopup.classList.contains('show')) {
+        if (!adminPopup.contains(e.target) && e.target !== adminTrigger) {
+          adminPopup.classList.remove('show');
+        }
+      }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && adminPopup.classList.contains('show')) {
+        adminPopup.classList.remove('show');
+      }
+    });
+  });
+  </script>
 </body>
 </html>
